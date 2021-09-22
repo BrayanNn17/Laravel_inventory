@@ -62,3 +62,4 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 use App\Http\Controllers\InvoiceController;
 Route::get('/invoices',[InvoiceController::class,'show'] );
+Route::get('/invoice/form',[InvoiceController::class,'form'])->name('invoice.form');

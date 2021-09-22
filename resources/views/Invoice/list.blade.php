@@ -4,6 +4,7 @@
 @section('encabezado','Invoices')
 
 @section('content')
+<a class="btn btn-primary" href="{{ route('invoice.form') }}">Nueva Factura</a>
 <table class="table table-striped table-hover">
 <thead>
 <tr>
@@ -26,7 +27,6 @@
     <td>${{ number_format($invoice->total,0,",",",") }}</td>
     <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal{{ $invoice->id }}">Detalle</button></td>
     <td>
-                <a href="" class="btn btn-warning">Editar</a>
                 <a href="" class="btn btn-danger">Eliminar</a>                
             </td>
 
@@ -60,14 +60,21 @@
     <div class="col-sm-3">${{ number_format($invoice->subtotal,0,",",",") }}</div>
 </div>
 <div class="row">
+    <div class="col-sm-6"></div>
+    <div class="col-sm-3">IVA:</div>
+    <div class="col-sm-3">${{ number_format($invoice->total-$invoice->subtotal,0,",",",") }}</div>
+</div>
+                   
+<div class="row">
                             <div class="col-sm-6"></div>
                             <div class="col-sm-3">Total:</div>
                             <div class="col-sm-3">${{ number_format($invoice->total,0,",",",") }}</div>
                         </div>
-                    </div>
+                       
                     <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     </div>
+                  </div>
                   </div>
 
 @endforeach
